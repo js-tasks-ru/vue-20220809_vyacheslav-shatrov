@@ -1,6 +1,9 @@
 <template>
   <div>
-    <label v-for="n in 5"><input type="radio" name="meetupId" :value="n" v-model="meetupId" />{{ n }}</label>
+    <label v-for="n in 5" :key="n">
+      <input type="radio" name="meetupId" :value="n" v-model="meetupId" />
+      {{ n }}
+    </label>
 
     <hr />
     <h3>{{ meetupTitle }}</h3>

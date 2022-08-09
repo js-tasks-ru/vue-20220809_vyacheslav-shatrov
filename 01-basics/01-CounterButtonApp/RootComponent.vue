@@ -1,6 +1,8 @@
 <template>
-  <h1>Counter</h1>
-  <button type="button" @click="add">{{ counter }}</button>
+  <div>
+    <h1>Counter</h1>
+    <button type="button" @click="add">{{ counter }}</button>
+  </div>
 </template>
 
 <script>

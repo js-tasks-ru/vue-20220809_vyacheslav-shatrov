@@ -1,6 +1,6 @@
 <template>
-  <h1>Counter</h1>
   <div class="row">
+    <h1>Counter</h1>
     <div class="col">
       <input type="number" v-model="first" />
     </div>

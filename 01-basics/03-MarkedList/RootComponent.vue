@@ -20,7 +20,10 @@ export default {
   }),
   computed: {
     selectedEmails() {
-      return emails.map((email) => [email, (this.selected = email.includes(this.pattern) && this.pattern)])
+      return emails.map((email) => [
+        email, 
+        (this.selected = email.includes(this.pattern) && this.pattern)
+      ])
     },
   },
 }
