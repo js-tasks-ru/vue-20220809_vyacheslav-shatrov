@@ -3,8 +3,8 @@
     <div class="form-group">
       <input type="search" v-model="pattern" />
     </div>
-    <ul v-for="email of selectedEmails">
-      <li :class="email[1] ? 'marked' : ''">{{ email[0] }}</li>
+    <ul v-for="email of selectedEmails" :key="email[0]">
+      <li :class="{marked: email[1]}">{{ email[0] }}</li>
     </ul>
   </div>
 </template>
@@ -15,14 +15,13 @@ import { emails } from './data'
 export default {
   name: 'markedList',
   data: () => ({
-    pattern: '',
-    selected: false,
+    pattern: ''
   }),
   computed: {
     selectedEmails() {
       return emails.map((email) => [
         email, 
-        (this.selected = email.includes(this.pattern) && this.pattern)
+        email.includes(this.pattern) && this.pattern
       ])
     },
   },
