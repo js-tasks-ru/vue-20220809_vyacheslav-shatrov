@@ -5,7 +5,7 @@ export default defineComponent({
   props: {
     count: Number,
   },
-  emits: ['update:value'],
+  emits: ['update:value', 'increase'],
 
   // Компонент должен иметь входной параметр
 
@@ -15,10 +15,10 @@ export default defineComponent({
   template: `
     <button 
       type="button" 
-      :count="count" 
-      @click="this.$emit('update:value', 42)"
+      :value="count" 
+      @click="this.$emit('increase', count)"
     >
-      {{ count }}ff
+      {{ count }}
     </button>
   `,
 })

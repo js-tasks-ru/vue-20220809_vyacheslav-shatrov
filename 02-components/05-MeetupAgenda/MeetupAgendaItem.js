@@ -3,24 +3,15 @@ import { agendaItemIcons, agendaItemDefaultTitles } from './meetupService.js'
 
 export default defineComponent({
   name: 'MeetupAgendaItem',
-  data() {
-    return {
-      icon: 'key',
-    }
-  },
   props: {
     agendaItem: Object,
   },
   agendaItemIcons,
   agendaItemDefaultTitles,
-  // mounted() {
-  //   this.icon = 'key'
-  //   console.log('Icon: ', this.icon)
-  // },
   template: `
     <div class="agenda-item">
-      <div class="agenda-item__col">{{ icon }}
-        <img :src="'/assets/icons/icon-' + 'key' + '.svg'" class="icon" alt="key" />
+      <div class="agenda-item__col">
+        <img :src="'/assets/icons/icon-' + \`\${$options.agendaItemIcons[agendaItem.type]}\` + '.svg'" class="icon" alt="key" />
       </div>
       <div class="agenda-item__col">{{ agendaItem.startsAt}} - {{ agendaItem.endsAt }}</div>
       <div class="agenda-item__col">
