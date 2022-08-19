@@ -5,22 +5,20 @@ export default defineComponent({
   props: {
     count: Number,
   },
-  data() {
-    return {
-      counter: 0,
-    }
-  },
+  emits: ['update:value'],
 
   // Компонент должен иметь входной параметр
 
   // Шаблон лучше держать максимально простым, а логику выносить в методы
 
   // Шаблон потребуется отредактировать
-  template: `<button type="button" @click="onClick($event)" >{{ count }}</button>`,
-  methods: {
-    onClick($event) {
-      this.counter = this.count
-      this.$emit('increase', ++this.counter)
-    },
-  },
+  template: `
+    <button 
+      type="button" 
+      :count="count" 
+      @click="this.$emit('update:value', 42)"
+    >
+      {{ count }}ff
+    </button>
+  `,
 })
