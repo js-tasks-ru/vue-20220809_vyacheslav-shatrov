@@ -5,7 +5,7 @@ export default defineComponent({
   props: {
     count: Number,
   },
-  emits: ['update:value', 'increase'],
+  emits: ['update:count', 'increase'],
 
   // Компонент должен иметь входной параметр
 
