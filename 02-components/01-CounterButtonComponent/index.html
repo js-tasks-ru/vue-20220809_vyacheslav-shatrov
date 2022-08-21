@@ -9,9 +9,9 @@
   <body>
     <div id="app" class="sample container">
       <p>count = {{ count }}</p>
-      <p><counter-button :count="count" @increase="increase"></counter-button></p>
-      <p><counter-button :count="count" @increase="increase" ></counter-button></p>
-      <p><counter-button :count="count" @increase="increase"></counter-button></p>
+      <p><counter-button :count="count" @update:count="count = $event"></counter-button></p>
+      <p><counter-button v-model:count="count"></counter-button></p>
+      <p><counter-button v-model:count="count"></counter-button></p>
     </div>
 
     <script type="module">
@@ -27,11 +27,6 @@
           return {
             count: 0,
           };
-        },
-        methods: {
-          increase() {
-            this.count++
-          }
         }
       }).mount('#app');
     </script>
