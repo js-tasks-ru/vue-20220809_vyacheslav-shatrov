@@ -1,13 +1,8 @@
 <template>
   <div class="toasts">
-    <div class="toast toast_success">
-      <ui-icon class="toast__icon" icon="check-circle" />
-      <span>Success Toast Example</span>
-    </div>
-
-    <div class="toast toast_error">
-      <ui-icon class="toast__icon" icon="alert-circle" />
-      <span>Error Toast Example</span>
+    <div v-for="toast in toastsArr" :key="toast.date" class="toast" :class="toast.class">
+      <ui-icon class="toast__icon" :icon="toast.icon" />
+      <span>{{toast.message + ' ' + toast.date}}</span>
     </div>
   </div>
 </template>
@@ -19,7 +14,40 @@ export default {
   name: 'TheToaster',
 
   components: { UiIcon },
-};
+  data() {
+    return {
+      toastsArr: [],
+    }
+  },
+  computed: {
+    showToasts() {
+      return this.toastsArr
+    }
+  },
+  methods: {
+    success(message, date) {
+      this.toastsArr.push({
+        show: true,
+        class: 'toast_success',
+        icon: 'check-circle',
+        message: message,
+        date
+      })
+    },
+    error(message, date) {
+      this.toastsArr.push({
+        show: true,
+        class: 'toast_error',
+        icon: 'alert-circle',
+        message: message,
+        date
+      })
+    },
+    delete(date) {
+      this.toastsArr = this.toastsArr.filter(toast => toast.date !== date)
+    }
+  }
+}
 </script>
 
 <style scoped>
