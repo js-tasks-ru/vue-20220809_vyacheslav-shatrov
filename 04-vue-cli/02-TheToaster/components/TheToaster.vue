@@ -1,8 +1,8 @@
 <template>
   <div class="toasts">
-    <div v-for="toast in toastsArr" :key="toast.date" class="toast" :class="toast.class">
+    <div v-for="toast in toastsArr" :key="toast.message" class="toast" :class="toast.class">
       <ui-icon class="toast__icon" :icon="toast.icon" />
-      <span>{{toast.message + ' ' + toast.date}}</span>
+      <span>{{ toast.message }}</span>
     </div>
   </div>
 </template>
@@ -25,26 +25,28 @@ export default {
     }
   },
   methods: {
-    success(message, date) {
+    success(message) {
       this.toastsArr.push({
         show: true,
         class: 'toast_success',
         icon: 'check-circle',
-        message: message,
-        date
+        message
       })
+    this.delete(message)
     },
-    error(message, date) {
+    error(message) {
       this.toastsArr.push({
         show: true,
         class: 'toast_error',
         icon: 'alert-circle',
-        message: message,
-        date
+        message
       })
+      this.delete(message)
     },
-    delete(date) {
-      this.toastsArr = this.toastsArr.filter(toast => toast.date !== date)
+    delete(message) {
+      setTimeout(() => {
+        this.toastsArr = this.toastsArr.filter(toast => toast.message !== message)
+      }, 5000)
     }
   }
 }

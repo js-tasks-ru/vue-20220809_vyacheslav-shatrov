@@ -19,18 +19,11 @@ export default {
 
   methods: {
     handleSuccessClick() {
-      this.toastCreated('success')
+      this.$refs.toaster.success('Success ' + new Date().toLocaleTimeString());
     },
 
     handleErrorClick() {
-      this.toastCreated('error')
-    },
-    toastCreated(message) {
-      const created = new Date().toLocaleTimeString()
-      this.$refs.toaster[message](message[0].toUpperCase() + message.slice(1), created);
-      setTimeout(() => {
-        this.$refs.toaster.delete(created)
-      }, 4999)
+      this.$refs.toaster.error('Error ' + new Date().toLocaleTimeString());
     }
   }
 };
