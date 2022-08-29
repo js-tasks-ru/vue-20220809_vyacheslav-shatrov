@@ -68,7 +68,7 @@ export default {
       return this.options.find(item => item.icon)
     }, 
     iconSelected() {
-      return this.options.find(item => item.value)?.icon
+      return this.options.find(item => item.value === this.value)?.icon
     }
   },
   methods: {
