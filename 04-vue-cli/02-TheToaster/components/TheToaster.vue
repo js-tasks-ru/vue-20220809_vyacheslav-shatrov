@@ -26,26 +26,30 @@ export default {
   },
   methods: {
     success(message) {
+      const id = this.toastsArr.length
       this.toastsArr.push({
+        id,
         show: true,
         class: 'toast_success',
         icon: 'check-circle',
         message
       })
-    this.delete(message)
+    this.delete(id)
     },
     error(message) {
+      const id = this.toastsArr.length
       this.toastsArr.push({
+        id,
         show: true,
         class: 'toast_error',
         icon: 'alert-circle',
         message
       })
-      this.delete(message)
+      this.delete(id)
     },
-    delete(message) {
+    delete(id) {
       setTimeout(() => {
-        this.toastsArr = this.toastsArr.filter(toast => toast.message !== message)
+        this.toastsArr = this.toastsArr.filter(toast => toast.id !== id)
       }, 5000)
     }
   }
