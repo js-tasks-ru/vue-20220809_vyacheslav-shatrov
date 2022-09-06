@@ -26,30 +26,31 @@ export default {
   },
   methods: {
     success(message) {
-      const id = this.toastsArr.length
-      this.toastsArr.push({
-        id,
+      const newToast = {
         show: true,
         class: 'toast_success',
         icon: 'check-circle',
         message
-      })
-    this.delete(id)
+      }
+      this.toastsArr.push(newToast)
+      this.delete(newToast)
     },
     error(message) {
-      const id = this.toastsArr.length
-      this.toastsArr.push({
-        id,
+      const newToast = {
         show: true,
         class: 'toast_error',
         icon: 'alert-circle',
         message
-      })
-      this.delete(id)
+      }
+      this.toastsArr.push(newToast)
+      this.delete(newToast)
     },
-    delete(id) {
+    delete(toast) {
       setTimeout(() => {
-        this.toastsArr = this.toastsArr.filter(toast => toast.id !== id)
+        const expiredToast = this.toastsArr.indexOf(toast);
+        if (expiredToast !== -1) {
+            this.toastsArr.splice(expiredToast, 1);
+        }
       }, 5000)
     }
   }
