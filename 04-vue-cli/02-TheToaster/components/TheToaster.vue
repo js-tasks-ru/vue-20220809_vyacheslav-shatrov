@@ -1,13 +1,8 @@
 <template>
   <div class="toasts">
-    <div class="toast toast_success">
-      <ui-icon class="toast__icon" icon="check-circle" />
-      <span>Success Toast Example</span>
-    </div>
-
-    <div class="toast toast_error">
-      <ui-icon class="toast__icon" icon="alert-circle" />
-      <span>Error Toast Example</span>
+    <div v-for="toast in toastsArr" :key="toast.message" class="toast" :class="toast.class">
+      <ui-icon class="toast__icon" :icon="toast.icon" />
+      <span>{{ toast.message }}</span>
     </div>
   </div>
 </template>
@@ -19,7 +14,47 @@ export default {
   name: 'TheToaster',
 
   components: { UiIcon },
-};
+  data() {
+    return {
+      toastsArr: [],
+    }
+  },
+  computed: {
+    showToasts() {
+      return this.toastsArr
+    }
+  },
+  methods: {
+    success(message) {
+      const newToast = {
+        show: true,
+        class: 'toast_success',
+        icon: 'check-circle',
+        message
+      }
+      this.toastsArr.push(newToast)
+      this.delete(newToast)
+    },
+    error(message) {
+      const newToast = {
+        show: true,
+        class: 'toast_error',
+        icon: 'alert-circle',
+        message
+      }
+      this.toastsArr.push(newToast)
+      this.delete(newToast)
+    },
+    delete(toast) {
+      setTimeout(() => {
+        const expiredToast = this.toastsArr.indexOf(toast);
+        if (expiredToast !== -1) {
+            this.toastsArr.splice(expiredToast, 1);
+        }
+      }, 5000)
+    }
+  }
+}
 </script>
 
 <style scoped>

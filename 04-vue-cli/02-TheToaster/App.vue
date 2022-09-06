@@ -1,9 +1,12 @@
 <template>
-  <the-toaster ref="toaster" />
-  <p>
-    <button type="button" @click="handleSuccessClick">Add Success Message</button>
-    <button type="button" @click="handleErrorClick">Add Error Message</button>
-  </p>
+  <div>
+    <the-toaster ref="toaster" />
+
+    <p>
+      <button type="button" @click="handleSuccessClick">Add Success Message</button>
+      <button type="button" @click="handleErrorClick">Add Error Message</button>
+    </p>
+  </div>
 </template>
 
 <script>
@@ -21,7 +24,7 @@ export default {
 
     handleErrorClick() {
       this.$refs.toaster.error('Error ' + new Date().toLocaleTimeString());
-    },
-  },
+    }
+  }
 };
 </script>
