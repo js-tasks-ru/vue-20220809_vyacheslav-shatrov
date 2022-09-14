@@ -5,6 +5,7 @@
       :uploader="uploadImage"
       @remove="image = undefined"
       @upload="image = $event.image"
+      @select="select"
     />
   </div>
 </template>
@@ -24,6 +25,11 @@ export default {
       uploadImage,
     };
   },
+  methods: {
+    select(file) {
+      this.image = URL.createObjectURL(file)
+    }
+  }
 };
 </script>
 
