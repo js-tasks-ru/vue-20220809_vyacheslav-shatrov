@@ -11,6 +11,7 @@
         ref="file"
         type="file" 
         accept="image/*" 
+        :disabled="loading"
         class="image-uploader__input"
         @change="selectFile"
         @click="removeFile" 
@@ -40,7 +41,7 @@ export default {
     }
   },
   emits: ['remove', 'upload', 'error', 'select'],
-  mounted() {
+  created() {
     if (this.preview) {
       this.image = this.preview
     }
@@ -60,7 +61,6 @@ export default {
   },
   methods: {
     selectFile(event) {
-      event.preventDefault()
       const file = event.target.files[0]
       if (file) {
         this.image = URL.createObjectURL(file)
