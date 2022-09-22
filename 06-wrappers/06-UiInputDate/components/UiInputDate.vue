@@ -1,6 +1,6 @@
 <template>
-  <ui-input 
-    :value="dateValue"
+  <ui-input
+    :modelValue="dateValue"
     :type="type"
     @input="$emit('update:modelValue', $event.target.valueAsNumber)"
   >
@@ -21,7 +21,7 @@ export default {
     },
     modelValue: {
       type: Number,
-      default:null
+      default: null
     }
   },
   emits: ['update:modelValue'],

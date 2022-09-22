@@ -20,7 +20,7 @@
         'form-control_sm': small,
       }"
       v-bind="$attrs"
-      :value="value"
+      :value="modelValue"
       @[updateEvent]="$emit('update:modelValue', $event.target.value)"
     />
 
@@ -36,7 +36,7 @@ export default {
   inheritAttrs: false,
 
   props: {
-    value: {
+    modelValue: {
       type: String,
     },
 
@@ -75,6 +75,9 @@ export default {
       this.$refs['input'].focus();
     },
   },
+  mounted() {
+    console.log("Model value: ", this.modelValue)
+  }
 };
 </script>
 
