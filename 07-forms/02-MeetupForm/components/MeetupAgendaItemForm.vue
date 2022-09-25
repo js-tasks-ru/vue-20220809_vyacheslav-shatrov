@@ -59,7 +59,6 @@ export default {
       required: true,
     },
   },
-
   emits: ['update:agendaItem', 'remove'],
 };
 </script>
