@@ -75,6 +75,9 @@ export default {
       this.$refs['input'].focus();
     },
   },
+  mounted() {
+    console.log("Model value: ", this.modelValue)
+  }
 };
 </script>
 

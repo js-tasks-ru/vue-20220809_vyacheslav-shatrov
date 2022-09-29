@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="sample container">
-    <p><counter-button v-model:count="count" /> - count = {{ count }}</p>
+    <p><counter-button v-model="count" /> - count = {{ count }}</p>
     <p><counter-button /> - независимый счётчик</p>
   </div>
 </template>
