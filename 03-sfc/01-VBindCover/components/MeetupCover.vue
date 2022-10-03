@@ -13,7 +13,6 @@ export default {
   },
   computed: {
     bgImage() {  
-      console.log('Image: ', this.image)
       return this.image ? `url(${this.image})` : 'var(--default-cover)'
     }
   }
